@@ -1,0 +1,64 @@
+<div *ngIf="isRegistered">
+  <h2>Registrado.</h2>
+</div>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Email:</label>
+    <input type="email" formControlName="email">
+    <div *ngIf="registerForm.get('email')?.errors?.required && registerForm.get('email')?.touched">Email is required</div>
+    <div *ngIf="registerForm.get('email')?.errors?.email && registerForm.get('email')?.touched">Email is invalid</div>
+  </div>
+
+  <div>
+    <label>User Name:</label>
+    <input type="text" formControlName="userName">
+    <div *ngIf="registerForm.get('userName')?.errors?.required && registerForm.get('userName')?.touched">User Name is required</div>
+    <div *ngIf="registerForm.get('userName')?.errors?.minlength && registerForm.get('userName')?.touched">User Name must be at least 3 characters</div>
+  </div>
+
+  <div>
+    <label>Password:</label>
+    <input type="password" formControlName="password">
+    <div *ngIf="registerForm.get('password')?.errors?.required && registerForm.get('password')?.touched">Password is required</div>
+    <div *ngIf="registerForm.get('password')?.errors?.minlength && registerForm.get('password')?.touched">Password must be at least 6 characters</div>
+  </div>
+
+  <div>
+    <label>Confirm Password:</label>
+    <input type="password" formControlName="confirmPassword">
+    <div *ngIf="registerForm.get('confirmPassword')?.errors?.required && registerForm.get('confirmPassword')?.touched">Confirm Password is required</div>
+    <div *ngIf="registerForm.get('confirmPassword')?.errors?.mustMatch && registerForm.get('confirmPassword')?.touched">Passwords do not match</div>
+  </div>
+
+  <div>
+    <label>Full Name:</label>
+    <input type="text" formControlName="nombreCompleto">
+    <div *ngIf="registerForm.get('nombreCompleto')?.errors?.required && registerForm.get('nombreCompleto')?.touched">Full Name is required</div>
+    <div *ngIf="registerForm.get('nombreCompleto')?.errors?.minlength && registerForm.get('nombreCompleto')?.touched">Full Name must be at least 5 characters</div>
+  </div>
+
+  <div>
+    <label>Company:</label>
+    <input type="text" formControlName="empresa">
+    <div *ngIf="registerForm.get('empresa')?.errors?.required && registerForm.get('empresa')?.touched">Company is required</div>
+    <div *ngIf="registerForm.get('empresa')?.errors?.minlength && registerForm.get('empresa')?.touched">Company must be at least 3 characters</div>
+  </div>
+
+  <div>
+    <label>Area:</label>
+    <input type="text" formControlName="area">
+    <div *ngIf="registerForm.get('area')?.errors?.required && registerForm.get('area')?.touched">Area is required</div>
+    <div *ngIf="registerForm.get('area')?.errors?.minlength && registerForm.get('area')?.touched">Area must be at least 3 characters</div>
+  </div>
+
+  <div>
+    <label>Reference:</label>
+    <input type="text" formControlName="referencia">
+    <div *ngIf="registerForm.get('referencia')?.errors?.required && registerForm.get('referencia')?.touched">Reference is required</div>
+  </div>
+
+  <div>
+    <button type="submit">Register</button>
+  </div>
+</form>
